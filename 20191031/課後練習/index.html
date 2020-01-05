@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="js/papaparse.min.js"></script>
+    <title>高雄市固定式違規照相設備設置地點</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<script language="JavaScript">
+    var url = "https://data.kcg.gov.tw/dataset/8b1cc6c2-6798-4a00-adc2-dd815996f418/resource/3142d797-8156-4a2f-be83-f917c1b1e585/download/red.csv";
+
+    Papa.parse(url, {
+        delimiter: "",	// auto-detect
+        header: true,
+        download: true,
+        complete: function(results) {
+            var i;
+
+            var out = '<table class="table table-striped table-hover">' +
+                '<thead><tr><th scope="col">編號</th>' +
+                '<th scope="col">型式</th>' +
+                '<th scope="col">測照地點</th>' +
+                '<th scope="col">測照方向</th>' +
+                '<th scope="col">行政區</th>' +
+                '<th scope="col">測照型式</th>' +
+                '<th scope="col">座標緯度</th>' +
+                '<th scope="col">座標經度</th></tr></thead><tbody>';
+
+            for(i = 0; i < results.data.length - 1; i++)
+            {
+                out += '<tr><th scope="row">' + results.data[i].編號 + '</th><td>' +
+                    results.data[i].型式 + "</td><td>" +
+                    results.data[i].測照地點 + "</td><td>" +
+                    results.data[i].測照方向 + "</td><td>" +
+                    results.data[i].行政區 + "</td><td>" +
+                    results.data[i].測照型式 + "</td><td>" +
+                    results.data[i].座標緯度 + "</td><td>" +
+                    results.data[i].座標經度 + "</td></tr>";
+            }
+            out += "</tbody></table>";
+            document.getElementById("showData").innerHTML = out;
+            console.log('convert to json sucessfully!');
+        }
+    })
+</script>
+
+<h2>高雄市固定式違規照相設備設置地點</h2>
+<div id="showData"></div>
+
+</body>
+</html>
