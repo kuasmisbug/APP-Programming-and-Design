@@ -1,0 +1,115 @@
+:root{
+    --back_color: yellow;
+    --heartbeat: 0s;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+}
+
+/* Style the header */
+header {
+    background-color: #666;
+    padding: 5px;
+    text-align: center;
+    color: white;
+}
+
+section {
+    padding: 5px;
+}
+
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+div.grid1 {
+    background-color: var(--back_color);
+    animation-name: ani_grid1;
+    animation-duration: 4s;
+}
+
+div.grid2 {
+    background-color: green;
+    animation-name: ani_grid2;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+div.grid3{
+    background-color: orange;
+    animation: ani_grid3 linear 0.8s;
+    animation-iteration-count: infinite;
+    transform-origin: 50% 50%;
+    -webkit-animation: ani_grid3 linear 0.8s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-transform-origin: 50% 50%;
+    -moz-animation: ani_grid3 linear 0.8s;
+    -moz-animation-iteration-count: infinite;
+    -moz-transform-origin: 50% 50%;
+    -o-animation: ani_grid3 linear 0.8s;
+    -o-animation-iteration-count: infinite;
+    -o-transform-origin: 50% 50%;
+    -ms-animation: ani_grid3 linear 0.8s;
+    -ms-animation-iteration-count: infinite;
+    -ms-transform-origin: 50% 50%;
+}
+
+div.grid4 {
+    background-color: dodgerblue;
+}
+
+/* CSS transform standard syntax */
+@keyframes ani_grid1 {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+@keyframes ani_grid2 {
+    0% {background-color: black;}
+    20% {background-color: green;}
+    40% {background-color: yellow;}
+    60% {background-color: red;}
+    80% {background-color: blue;}
+    100% {background-color: green;}
+}
+
+@keyframes ani_grid3{
+    0% {
+        transform:  translate(0px,0px)  ;
+    }
+    15% {
+        transform:  translate(0px,-25px)  ;
+    }
+    30% {
+        transform:  translate(0px,0px)  ;
+    }
+    45% {
+        transform:  translate(0px,-15px)  ;
+    }
+    60% {
+        transform:  translate(0px,0px)  ;
+    }
+    75% {
+        transform:  translate(0px,-5px)  ;
+    }
+    100% {
+        transform:  translate(0px,0px)  ;
+    }
+}
+
+.fas {
+    animation-name: heartbeat;
+    animation-duration: var(--heartbeat);
+    animation-iteration-count: infinite;
+}
+
+@keyframes heartbeat {
+    from {transform: scale(1,1); color: white;}
+    to {transform: scale(1.2,1.2); color: palevioletred;}
+}
